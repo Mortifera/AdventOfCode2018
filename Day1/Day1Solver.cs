@@ -1,9 +1,8 @@
-﻿using System;
-using PuzzleCommon;
+﻿using PuzzleCommon;
 
 namespace Day1
 {
-    public class Day1Solver : IPuzzleSolver
+    public partial class Day1Solver : IPuzzleSolver
     {
         private string _inputPath;
         public Day1Solver(string inputPath) {
@@ -13,19 +12,22 @@ namespace Day1
         public IPuzzleOutput Solve()
         {
             var inputReader = new InputReader();
-            var inputProcessor = new InputProcessor();
+            var inputProcessor = new InputsProcessorFacade();
 
             var inputs = inputReader.GetInputFromFile(_inputPath);
-            var outputFrequency = inputProcessor.GetFrequencyOutput(inputs);
+            
+            inputProcessor.Process(inputs);
 
-            return new Day1SolverOutput(outputFrequency);
+            return new TwoPartPuzzleOutput(
+                new Day1Part1Output(inputProcessor.OutputFrequency),
+                new Day1Part2Output(inputProcessor.FirstFrequencyReachedTwice)
+            );
         }
 
-        private class Day1SolverOutput : IPuzzleOutput
-        {
+        private class Day1Part1Output : IPuzzleOutput {
             private readonly long _frequency;
 
-            public Day1SolverOutput(long frequency) {
+            public Day1Part1Output(long frequency) {
                 _frequency = frequency;
             }
 
@@ -34,6 +36,21 @@ namespace Day1
             public string ToHumanString()
             {
                 return $"Frequency: {_frequency}";
+            }
+        }
+        private class Day1Part2Output : IPuzzleOutput
+        {
+            private readonly long _reachedFrequencyTwice;
+
+            public Day1Part2Output(long reachedFrequencyTwice) {
+                _reachedFrequencyTwice = reachedFrequencyTwice;
+            }
+
+            public object Output => _reachedFrequencyTwice;
+
+            public string ToHumanString()
+            {
+                return $"First frequency reach twice: {_reachedFrequencyTwice}";
             }
         }
     }
