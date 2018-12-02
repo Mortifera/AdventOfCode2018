@@ -35,16 +35,13 @@ namespace Day2
         }
 
         private IPuzzleOutput SolvePart2(string[] inputLines) {
-            var sortedInputLines = inputLines.Clone() as string[];
-            Array.Sort(sortedInputLines);
+            for(int y = 0; y < inputLines.Length; ++y) {
 
-            for(int y = 0; y < sortedInputLines.Length; ++y) {
-
-                for(int x = 0; x < sortedInputLines.Length; ++x) {
-                    long diff = (x == y ? 0 : DiffBy(sortedInputLines[x], sortedInputLines[y]));
+                for(int x = 0; x < inputLines.Length; ++x) {
+                    long diff = (x == y ? 0 : DiffBy(inputLines[x], inputLines[y]));
 
                     if (diff == 1) {
-                        return new Day2Part2SolverOutput(CommonCharacters(sortedInputLines[x], sortedInputLines[y]));
+                        return new Day2Part2SolverOutput(CommonCharacters(inputLines[x], inputLines[y]));
                     }
                 }
             }

@@ -24,9 +24,11 @@ namespace PuzzleRunner
         }
 
         private readonly IPuzzleSolver _puzzleSolver;
+        private readonly int runXTimes;
 
-        public TimedPuzzleSolver(IPuzzleSolver puzzleSolver) {
+        public TimedPuzzleSolver(IPuzzleSolver puzzleSolver, int runXTimes = 1) {
             _puzzleSolver = puzzleSolver;
+            this.runXTimes = runXTimes;
         }
 
         public IPuzzleOutput Solve()
@@ -34,7 +36,10 @@ namespace PuzzleRunner
             var stopwatch = new Stopwatch();
             
             stopwatch.Start();
-            var solverOutput = _puzzleSolver.Solve();
+            IPuzzleOutput solverOutput = null;
+            for (int i = 0; i < runXTimes; ++i) {
+                solverOutput = _puzzleSolver.Solve();
+            }
             stopwatch.Stop();
 
             return new TimedPuzzleSolverOutput(
@@ -49,7 +54,7 @@ namespace PuzzleRunner
         static void Main(string[] args)
         {
             IPuzzleSolver day2Solver = new Day2Solver("../PuzzleInputs/Day2/input.txt");
-            day2Solver = new TimedPuzzleSolver(day2Solver);
+            day2Solver = new TimedPuzzleSolver(day2Solver, 1000);
             var solver2Output = day2Solver.Solve();
             System.Console.WriteLine(solver2Output.ToHumanString());
 
