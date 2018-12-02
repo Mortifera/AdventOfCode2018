@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuzzleRunner", "PuzzleRunne
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuzzleCommon", "PuzzleCommon\PuzzleCommon.csproj", "{89640D48-CEB1-47C6-8F93-843A60F5ED2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day2", "Day2\Day2.csproj", "{A1EFB88F-967E-48CA-AE26-371401E1F8F6}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,5 +60,17 @@ Global
 		{89640D48-CEB1-47C6-8F93-843A60F5ED2E}.Release|x64.Build.0 = Release|Any CPU
 		{89640D48-CEB1-47C6-8F93-843A60F5ED2E}.Release|x86.ActiveCfg = Release|Any CPU
 		{89640D48-CEB1-47C6-8F93-843A60F5ED2E}.Release|x86.Build.0 = Release|Any CPU
+		{A1EFB88F-967E-48CA-AE26-371401E1F8F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1EFB88F-967E-48CA-AE26-371401E1F8F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1EFB88F-967E-48CA-AE26-371401E1F8F6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A1EFB88F-967E-48CA-AE26-371401E1F8F6}.Debug|x64.Build.0 = Debug|Any CPU
+		{A1EFB88F-967E-48CA-AE26-371401E1F8F6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A1EFB88F-967E-48CA-AE26-371401E1F8F6}.Debug|x86.Build.0 = Debug|Any CPU
+		{A1EFB88F-967E-48CA-AE26-371401E1F8F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1EFB88F-967E-48CA-AE26-371401E1F8F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1EFB88F-967E-48CA-AE26-371401E1F8F6}.Release|x64.ActiveCfg = Release|Any CPU
+		{A1EFB88F-967E-48CA-AE26-371401E1F8F6}.Release|x64.Build.0 = Release|Any CPU
+		{A1EFB88F-967E-48CA-AE26-371401E1F8F6}.Release|x86.ActiveCfg = Release|Any CPU
+		{A1EFB88F-967E-48CA-AE26-371401E1F8F6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

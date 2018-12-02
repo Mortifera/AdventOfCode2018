@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using Day1;
+using Day2;
 using PuzzleCommon;
 using TwoPartPuzzleOutput = PuzzleCommon.TwoPartPuzzleOutput;
 
@@ -46,15 +48,17 @@ namespace PuzzleRunner
     {
         static void Main(string[] args)
         {
-
-            IPuzzleSolver day1Solver = new Day1Solver("../PuzzleInputs/Day1/input.txt");
-            day1Solver = new TimedPuzzleSolver(day1Solver);
-
-            var solverOutput = day1Solver.Solve();
-            System.Console.WriteLine(solverOutput.ToHumanString());
+            IPuzzleSolver day2Solver = new Day2Solver("../PuzzleInputs/Day2/input.txt");
+            day2Solver = new TimedPuzzleSolver(day2Solver);
+            var solver2Output = day2Solver.Solve();
+            System.Console.WriteLine(solver2Output.ToHumanString());
 
             if (!testDay1()) {
                 throw new FailedTestException("Failed Day1 tests");
+            }
+
+            if (!testDay2()) {
+                throw new FailedTestException("Day2");
             }
         }
 
@@ -79,6 +83,23 @@ namespace PuzzleRunner
                 return false;
             }
             
+            return true;
+        }
+
+        static bool testDay2() {
+            Day2Solver day2Solver = new Day2Solver("../PuzzleInputs/Day2/input.txt");
+            var output = day2Solver.Solve() as TwoPartPuzzleOutput;
+
+            if((long)output.Part1.Output != 5928) {
+                System.Console.WriteLine($"Day2 Part1 solver solution is {output.Part1.Output} when it should have been 5928");
+                return false;
+            }
+
+            if((string)output.Part2.Output != "bqlporuexkwzyabnmgjqctvfs") {
+                System.Console.WriteLine($"Day2 Part2 solver solution is {output.Part2.Output} when it should have been 'bqlporuexkwzyabnmgjqctvfs");
+                return false;
+            }
+
             return true;
         }
     }
