@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using Day1;
 using Day2;
+using Day3;
+using Day4;
 using PuzzleCommon;
 using TwoPartPuzzleOutput = PuzzleCommon.TwoPartPuzzleOutput;
 
@@ -53,10 +55,10 @@ namespace PuzzleRunner
     {
         static void Main(string[] args)
         {
-            IPuzzleSolver day2Solver = new Day2Solver("../PuzzleInputs/Day2/input.txt");
-            day2Solver = new TimedPuzzleSolver(day2Solver, 1000);
-            var solver2Output = day2Solver.Solve();
-            System.Console.WriteLine(solver2Output.ToHumanString());
+            IPuzzleSolver solver = new Day4Solver("../PuzzleInputs/Day4/input.txt");
+            solver = new TimedPuzzleSolver(solver);
+            var solverOutput = solver.Solve();
+            System.Console.WriteLine(solverOutput.ToHumanString());
 
             if (!testDay1()) {
                 throw new FailedTestException("Failed Day1 tests");
@@ -64,6 +66,10 @@ namespace PuzzleRunner
 
             if (!testDay2()) {
                 throw new FailedTestException("Day2");
+            }
+
+            if (!testDay3()) { //
+                throw new FailedTestException("Day3");
             }
         }
 
@@ -105,6 +111,23 @@ namespace PuzzleRunner
                 return false;
             }
 
+            return true;
+        }
+
+        static bool testDay3() {
+            Day3Solver day3Solver = new Day3Solver("../PuzzleInputs/Day3/input.txt");
+            TwoPartPuzzleOutput twoPartPuzzleOutput = day3Solver.Solve() as TwoPartPuzzleOutput;
+            
+            if((int)twoPartPuzzleOutput.Part1.Output != 114946) {
+                System.Console.WriteLine($"Day1 Part1 solver solution is {twoPartPuzzleOutput.Part1.Output} when it should have been 114946");
+                return false;
+            }
+
+            if((int)twoPartPuzzleOutput.Part2.Output != 877) {
+                System.Console.WriteLine($"Day1 Part2 solver solution is {twoPartPuzzleOutput.Part2.Output} when it should have been 877");
+                return false;
+            }
+            
             return true;
         }
     }
